@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Time Table 4-2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #2E8B57;
+            color: #333;
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            transition: background-color 1s ease-in-out;
+        }
+        .container {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            transition: box-shadow 0.5s ease-in-out;
+        }
+        .card {
+            background: #f8f9fa;
+            color: #333;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            transition: transform 0.3s ease-in-out;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .btn-join {
+            background-color: #ffb6c1;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .btn-join:hover {
+            background-color: #ff708d;
+        }
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 20px;
+            cursor: pointer;
+            transition: color 0.5s ease-in-out;
+        }
+        h1:hover {
+            color: #ffcc00;
+        }
+        .card-body {
+            text-align: center;
+        }
+        .card-title {
+            font-size: 20px;
+        }
+        .card-text {
+            font-size: 16px;
+        }
+        .icon {
+            font-size: 24px;
+            margin-right: 8px;
+        }
+    </style>
+    <script>
+        // JavaScript for dynamic color scheme and card positioning
+        document.addEventListener("DOMContentLoaded", function() {
+            const body = document.body;
+            const colors = ["#ff7e5f", "#76c7c0", "#ffcc00", "#f3d4e3", "#95afc0"];
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+            body.style.backgroundColor = randomColor;
+
+            setInterval(function() {
+                const newColor = colors[Math.floor(Math.random() * colors.length)];
+                body.style.backgroundColor = newColor;
+            }, 5000); // Change color every 5 seconds
+
+            const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+            const currentDay = new Date().getDay();
+            const container = document.querySelector('.container');
+
+            // Function to reorder cards based on the current day
+            function reorderCards() {
+                const cards = document.querySelectorAll('.card');
+                const orderedCards = Array.from(cards).sort((a, b) => {
+                    const dayA = days.indexOf(a.getAttribute('data-day'));
+                    const dayB = days.indexOf(b.getAttribute('data-day'));
+                    return dayA - dayB;
+                });
+
+                orderedCards.forEach(card => container.appendChild(card));
+            }
+
+            reorderCards();
+        });
+    </script>
+</head>
+<body>
+
+<h1>Class Time Table 4-2</h1>
+
+<div class="container">
+    <div class="card" data-day="Saturday">
+        <div class="card-body">
+            <i class="icon fas fa-flask"></i>
+            <h5 class="card-title">18CY1005</h5>
+            <p class="card-text">Chemistry for Engineers</p>
+            <p class="card-text">Saturday 07.00 to 08.40 PM</p>
+            <a href="https://kluniversity.webex.com/kluniversity/j.php?MTID=mb1e1fef4d628a8285f3c737b407916f8" class="btn btn-join">Join Class</a>
+        </div>
+    </div>
+
+    <div class="card" data-day="Wednesday">
+        <div class="card-body">
+            <i class="icon fas fa-book"></i>
+            <h5 class="card-title">20UC0008</h5>
+            <p class="card-text">Indian Constitution</p>
+            <p class="card-text">Wednesday 07.00 to 08.40 PM</p>
+            <a href="https://kluniversity.webex.com/kluniversity/j.php?MTID=m5718410175cee1fee12840b515a8e88a" class="btn btn-join">Join Class</a>
+        </div>
+    </div>
+
+    <div class="card" data-day="Friday">
+        <div class="card-body">
+            <i class="icon fas fa-balance-scale"></i>
+            <h5 class="card-title">20UC0010</h5>
+            <p class="card-text">Universal Human Values & Professional Ethics</p>
+            <p class="card-text">Friday 07.00 to 08.40 PM</p>
+            <a href="https://kluniversity.webex.com/kluniversity/j.php?MTID=m16123e1293881b85f5bee2209c703de3" class="btn btn-join">Join Class</a>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
